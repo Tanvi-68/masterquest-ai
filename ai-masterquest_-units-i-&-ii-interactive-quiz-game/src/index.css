@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --theme-bg: #E8DFE0;
+    --theme-card: #FCFAF8;
+    --theme-surface: #F3ECE6;
+    --theme-text: #8F5B34;
+    --theme-text-dark: #5C351B;
+    --theme-text-muted: #A37957;
+    --theme-accent: #DAB692;
+    --theme-accent-hover: #CCA076;
+    --theme-accent-dark: #A97849;
+    --theme-border: #DBC5B0;
+    --theme-border-subtle: #E8DCCF;
+  }
+
+  body {
+    background-color: #E8DFE0;
+    color: #8F5B34;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* Custom Palette Utilities */
+.bg-theme-main {
+  background-color: #E8DFE0 !important;
+}
+
+.bg-theme-card {
+  background-color: #FAF6F3 !important;
+}
+
+.bg-theme-surface {
+  background-color: #F2E8E0 !important;
+}
+
+.bg-theme-accent {
+  background-color: #DAB692 !important;
+}
+
+.hover\:bg-theme-accent-hover:hover {
+  background-color: #CCA076 !important;
+}
+
+.text-theme-main {
+  color: #8F5B34 !important;
+}
+
+.text-theme-dark {
+  color: #5C351B !important;
+}
+
+.text-theme-muted {
+  color: #A37957 !important;
+}
+
+.border-theme-accent {
+  border-color: #DAB692 !important;
+}
+
+.border-theme-subtle {
+  border-color: #E2D3C4 !important;
+}

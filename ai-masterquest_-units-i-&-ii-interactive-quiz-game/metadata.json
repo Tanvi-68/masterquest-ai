@@ -1,0 +1,6 @@
+{
+  "name": "AI MasterQuest: Units I & II Interactive Quiz Game",
+  "description": "Interactive, academic Artificial Intelligence Quiz Game covering Units I & II syllabus with 60+ questions, 25-mark evaluation mode, multi-format questions, instant feedback, lifelines, and Gemini AI tutoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

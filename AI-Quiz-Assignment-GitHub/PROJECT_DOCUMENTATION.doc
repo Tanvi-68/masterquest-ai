@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>AI Quiz Game - Project Documentation</title>
+<style>
+body { font-family: 'Calibri', 'Arial', sans-serif; font-size: 11pt; line-height: 1.5; color: #1e293b; margin: 40px; }
+h1 { font-size: 20pt; color: #0f172a; text-align: center; margin-bottom: 4px; font-weight: bold; }
+h2 { font-size: 14pt; color: #1e3a8a; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px; margin-top: 24px; font-weight: bold; }
+h3 { font-size: 12pt; color: #0f172a; margin-top: 16px; font-weight: bold; }
+p { margin: 6px 0; }
+.subtitle { text-align: center; font-size: 13pt; color: #475569; margin-bottom: 24px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; }
+th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background-color: #f1f5f9; font-weight: bold; color: #0f172a; }
+pre, code { font-family: 'Consolas', 'Courier New', monospace; background-color: #f8fafc; padding: 2px 4px; border-radius: 4px; }
+.code-block { background-color: #0f172a; color: #f8fafc; padding: 12px; border-radius: 6px; font-family: 'Consolas', monospace; font-size: 9.5pt; white-space: pre-wrap; }
+.badge { font-weight: bold; color: #1d4ed8; }
+</style>
+</head>
+<body>
+
+<h1>CHRIST (DEEMED TO BE UNIVERSITY)</h1>
+<div class="subtitle">
+  <strong>Department of Computer Science</strong><br>
+  Coursework Assessment: Interactive AI Quiz Game (Units I &amp; II)<br>
+  <strong>Maximum Marks: 25.0</strong> | Random 10-Question Evaluation
+</div>
+
+<h2>1. Executive Summary</h2>
+<p>
+This project is an interactive, academic Quiz Game built for evaluating concepts from Units I and II of Artificial Intelligence. The system satisfies all coursework criteria by implementing a bank of <strong>62 comprehensive questions</strong> across 7 diverse formats (MCQs, True/False, Assertion–Reason, Fill in the Blanks, Match the Following, Real-world Application Scenarios, and State-space Problem Solving).
+</p>
+<p>
+The application features an <strong>Official 25-Mark Examination mode</strong> where 10 randomized questions (2.5 marks each) are presented with a countdown timer, lifelines (50:50 and AI Proctor hints), instant grading, and generation of a printable assessment certificate and scorecard.
+</p>
+
+<h2>2. Technologies Used &amp; Why Each Was Chosen</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Technology</th>
+      <th style="width: 25%;">Role in Project</th>
+      <th style="width: 50%;">Why It Was Chosen (Architectural Justification)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>React 19 &amp; TypeScript</strong></td>
+      <td>Frontend UI &amp; State Machine</td>
+      <td>Ensures strict type-safety across 7 question formats (matching pairs, fill-in validations, assertion-reasons). Manages active timer states, lifelines, and question palettes with 0ms client-side latency.</td>
+    </tr>
+    <tr>
+      <td><strong>Vite 8</strong></td>
+      <td>Build Tool &amp; Dev Server</td>
+      <td>Offers sub-second compilation, tree-shaking, and lightweight static production asset generation.</td>
+    </tr>
+    <tr>
+      <td><strong>Tailwind CSS 4</strong></td>
+      <td>Styling &amp; Typography Engine</td>
+      <td>Provides high-contrast academic aesthetics, anti-slop design discipline (60-30-10 color allocation), and clean CSS for official printable certificates.</td>
+    </tr>
+    <tr>
+      <td><strong>Node.js &amp; Express 4</strong></td>
+      <td>Full-Stack Server &amp; API Proxy</td>
+      <td>Runs on port 3000, serving Vite in development and providing secure <code>/api/ai-explain</code> and <code>/api/ai-hint</code> routes without exposing API keys to the browser.</td>
+    </tr>
+    <tr>
+      <td><strong>Google Gemini 3.8 Flash SDK</strong></td>
+      <td>AI Concept Tutor &amp; Proctor</td>
+      <td>Powers the "Ask AI Professor" interactive explainer and real-time subtle lifeline hints using the modern <code>@google/genai</code> SDK, with offline fallbacks.</td>
+    </tr>
+    <tr>
+      <td><strong>Web Audio API</strong></td>
+      <td>Audio Synthesizer</td>
+      <td>Generates clean procedural chime chords and timer alerts natively in the browser without downloading large external MP3/WAV files.</td>
+    </tr>
+    <tr>
+      <td><strong>Canvas Confetti</strong></td>
+      <td>Celebration FX</td>
+      <td>Lightweight particle celebration triggered upon achieving &ge;60% in the 25-mark examination.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Comparative Evaluation vs. Alternative Platforms</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Platform</th>
+      <th>Pros</th>
+      <th>Limitations</th>
+      <th>Why Our Solution is Superior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Google / MS Forms</strong></td>
+      <td>Fast setup</td>
+      <td>No randomized 10Q draw per student, no lifelines, no live visualizers, no printable certificate</td>
+      <td>Full interactive state machine, timer, score calculation out of 25, and official Christ University certificate</td>
+    </tr>
+    <tr>
+      <td><strong>Streamlit / Gradio</strong></td>
+      <td>Simple Python script</td>
+      <td>Full-page rerun on every button click, high latency, complex certificate printing</td>
+      <td>Instant client-side feedback, procedural audio, seamless responsive layout across devices</td>
+    </tr>
+    <tr>
+      <td><strong>Kahoot / Quizizz</strong></td>
+      <td>Gamified</td>
+      <td>Requires external accounts, proprietary questions, cannot embed university syllabus diagrams</td>
+      <td>100% self-contained, offline-ready, custom-tailored to Christ University syllabus slides</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. Step-by-Step Guide: How to Set Up &amp; Run on Another Device</h2>
+<p>
+The application can be run easily on <strong>Windows</strong>, <strong>macOS</strong>, or <strong>Linux</strong>. Follow these sequential steps:
+</p>
+
+<h3>Step 1: Check Prerequisites</h3>
+<p>
+Ensure Node.js (version 18.0.0 or higher) and npm are installed. Download from <a href="https://nodejs.org">https://nodejs.org</a>. Check your terminal:
+</p>
+<div class="code-block">node -v
+npm -v</div>
+
+<h3>Step 2: Navigate to Project Directory</h3>
+<div class="code-block">cd ai-quiz-game</div>
+
+<h3>Step 3: Install Dependencies</h3>
+<div class="code-block">npm install</div>
+
+<h3>Step 4: Configure Environment Variables (Optional for Live Gemini AI)</h3>
+<div class="code-block">cp .env.example .env
+# Edit .env and enter your GEMINI_API_KEY="YOUR_KEY_HERE"</div>
+<p><em>Note: The quiz game and question bank work 100% fully offline with built-in academic explanations even without an API key.</em></p>
+
+<h3>Step 5: Start Development Server</h3>
+<div class="code-block">npm run dev</div>
+<p>Open your browser and navigate to: <strong>http://localhost:3000</strong></p>
+
+<h3>Step 6: Build for Production (Optional)</h3>
+<div class="code-block">npm run build
+npm start</div>
+
+<h2>5. Game Design &amp; Pedagogical Architecture</h2>
+<ul>
+  <li><strong>Balanced Random 10-Question Exam:</strong> Each student evaluation randomly selects 10 questions (2.5 marks each = 25.0 Marks Total) ensuring representation from Unit I, Unit II, real-world scenarios, and state-space calculations.</li>
+  <li><strong>Multi-Modal Question Formats:</strong> 7 formats including MCQs, True/False, Assertion–Reason, Fill in the Blank, Match the Following, Scenarios (e.g., Tesla Autopilot, Medical diagnosis), and State-space problems (Blocks World, A* trace, BFS queue status).</li>
+  <li><strong>Dual Lifelines:</strong> 50:50 (eliminates 2 incorrect options) and AI Proctor Hints.</li>
+  <li><strong>Interactive Class Demo Visualizers:</strong> Built-in visualizers for Blocks World Hill Climbing heuristic (-6 to +6) and A* Search tree trace with real-time OPEN and CLOSED priority queues.</li>
+</ul>
+
+<h2>6. Syllabus Mapping Summary</h2>
+<p>
+<strong>Unit I:</strong> Foundations of AI, John McCarthy 1960, 4 Quadrants (Thinking/Acting Humanly &amp; Rationally), Turing Test, Intelligent Agents, Rationality vs Perfection, PEAS Framework, Nature of Environments, 5 Agent Types (Simple Reflex, Model-based, Goal-based, Utility-based, Learning Agent).<br>
+<strong>Unit II:</strong> Problem Formulation, State Space Search, Production Systems, Problem Characteristics, Issues in Search Program Design, BFS, DFS, Iterative Deepening (IDDFS), Uniform Cost, Informed Search, Heuristics, Hill Climbing and variations, A* Search, Constraint Satisfaction Problems (CSP), and Means-Ends Analysis (GPS 1961, Operator Subgoaling).
+</p>
+
+</body>
+</html>
